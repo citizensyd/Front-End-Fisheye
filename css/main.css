@@ -1,0 +1,146 @@
+body {
+  font-family: "DM Sans", sans-serif;
+  margin: 0;
+}
+
+h1 {
+  color: #901C1C;
+  margin-right: 100px;
+}
+
+.photographer_section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 70px;
+  margin-top: 100px;
+}
+.photographer_section article {
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.photographer_section article h2 {
+  color: #d3573c;
+  font-size: 36px;
+}
+.photographer_section article img {
+  height: 200px;
+  width: 200px;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+}
+
+.photograph-header {
+  background-color: #FAFAFA;
+  height: 300px;
+  margin: 0 100px;
+}
+
+.contact_button {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding: 11px;
+  width: 170px;
+  height: 70px;
+  border: none;
+  background-color: #901C1C;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+}
+form label {
+  color: #312e2e;
+  font-size: 36px;
+}
+form div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: self-start;
+  margin-bottom: 26px;
+}
+form input {
+  width: 100%;
+  height: 68px;
+  border: none;
+  border-radius: 5px;
+}
+
+#contact_modal {
+  display: none;
+}
+
+.modal {
+  border-radius: 5px;
+  background-color: #db8876;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 35px;
+  margin: auto;
+}
+.modal header {
+  justify-content: space-between;
+  width: 100%;
+}
+.modal header h2 {
+  font-size: 64px;
+  font-weight: normal;
+  text-align: center;
+}
+.modal img {
+  cursor: pointer;
+}
+
+.logo {
+  height: 50px;
+  margin-left: 100px;
+}
+
+/* @import "./base/normalize";
+@import "./utils/variables-color";
+@import "./utils/variables-mediaqueries";
+@import "./utils/variables-font";
+@import "./base/base";
+@import "./layout/header-small";
+@import "./layout/header-large";
+@import "./layout/carousel-small";
+@import "./layout/carousel-large";
+@import "./layout/body-page";
+@import "./layout/footer-small";
+@import "./layout/footer-large";
+@import "./layout/hook-small";
+@import "./layout/hook-large";
+@import "./components/card-grey-small";
+@import "./components/card-grey-large";
+@import "./components/button-small";
+@import "./components/button-large";
+@import "./components/card-small";
+@import "./components/card-large";
+@import "./components/up-and-down-small";
+@import "./components/up-and-down-large";
+@import "./pages/home-small";
+@import "./pages/home-large";
+@import "./pages/error-small";
+@import "./pages/error-large";
+@import "./pages/fiche-small";
+@import "./pages/fiche-large";
+@import "./pages/a-propos-small";
+@import "./pages/a-propos-large"; */

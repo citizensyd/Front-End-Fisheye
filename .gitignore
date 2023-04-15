@@ -1,0 +1,12 @@
+# Ignore Sass files and generated documents
+sass/
+
+# Ignore Node.js configuration files
+node_modules/
+
+# Ignore Node.js package installation configuration files
+package-lock.json
+package.json
+
+# Ignore ESLint configuration files
+.eslintrc.js
