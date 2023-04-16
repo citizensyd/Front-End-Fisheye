@@ -1,6 +1,3 @@
-# Ignore Sass files and generated documents
-sass/
-
 # Ignore Node.js configuration files
 node_modules/
 
