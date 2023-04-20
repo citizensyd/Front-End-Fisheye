@@ -1,3 +1,4 @@
+@import "./base/a_modern_css_reset";
 @import "./base/base";
 @import "./layout/form";
 @import "./layout/header";
@@ -5,6 +6,8 @@
 @import "./layout/photographer";
 @import "./components/button";
 @import "./components/logo";
+@import "./components/photographer-icon";
+
 
 /* @import "./base/normalize";
 @import "./utils/variables-color";
