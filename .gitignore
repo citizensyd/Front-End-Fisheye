@@ -7,3 +7,6 @@ package.json
 
 # Ignore ESLint configuration files
 .eslintrc.js
+
+# files to test code
+test.js
