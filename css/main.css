@@ -17,6 +17,7 @@ blockquote,
 dl,
 dd {
   margin: 0;
+  caret-color: transparent;
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
@@ -165,6 +166,10 @@ header {
   color: #d3573c;
   font-size: 36px;
   font-weight: 400;
+  cursor: pointer;
+}
+.photographer_section article img {
+  cursor: pointer;
 }
 .photographer_section article p:nth-of-type(1) {
   color: #901C1C;
