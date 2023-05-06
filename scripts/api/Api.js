@@ -39,6 +39,7 @@ class PhotographerApi extends Api {
    */
   constructor(url) {
     super(url);
+
   }
   async getPhotographer(id) {
     const { photographers } = await this.get();
@@ -46,4 +47,32 @@ class PhotographerApi extends Api {
   }
 }
 
-export { PhotographersApi, PhotographerApi };
+class MediaApi extends Api {
+    /**
+   *
+   * @param {string} url
+   */
+    constructor(url) {
+      super(url);
+    }
+    async getMedia(id) {
+      const { media } = await this.get();
+      return media.filter((item) => item.photographerId === id);
+    }
+}
+
+class UniqueMediaApi extends Api {
+  /**
+ *
+ * @param {string} url
+ */
+  constructor(url) {
+    super(url);
+  }
+  async getUniqueMedia(id) {
+    const { media } = await this.get();
+    return media.filter((item) => item.id === id);
+  }
+}
+
+export { PhotographersApi, PhotographerApi, MediaApi, UniqueMediaApi };

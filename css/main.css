@@ -113,6 +113,8 @@ header {
   justify-content: space-between;
   align-items: center;
   height: 90px;
+  max-width: 1240px;
+  margin: 0 auto;
 }
 
 #contact_modal {
@@ -141,6 +143,17 @@ header {
   font-size: 64px;
   font-weight: normal;
   text-align: center;
+}
+
+.photographer-media {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 10px;
+  -moz-column-gap: 95px;
+       column-gap: 95px;
+  margin: 0 auto;
+  max-width: 1240px;
 }
 
 .photograph-header {
@@ -183,6 +196,44 @@ header {
   color: #757575;
 }
 
+.photograph-header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fafafa;
+  height: 300px;
+  margin: 0 auto;
+  max-width: 1240px;
+  padding: 50px;
+}
+.photograph-header button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  order: 1;
+}
+.photograph-header .photographer-header-name-city-tag {
+  order: 0;
+}
+.photograph-header .photographer-icon {
+  order: 2;
+}
+.photograph-header h2 {
+  color: #d3573c;
+  font-size: 48px;
+  font-weight: 400;
+}
+.photograph-header p:nth-of-type(1) {
+  color: #901c1c;
+  font-size: 24px;
+}
+.photograph-header p:nth-of-type(2) {
+  font-size: 18px;
+  margin-top: 15px;
+}
+
 .contact_button {
   font-size: 20px;
   font-weight: bold;
@@ -198,7 +249,18 @@ header {
 
 .logo {
   height: 50px;
-  margin-left: 100px;
+}
+
+.price {
+  position: absolute;
+  right: -75px;
+  top: 400px;
+  width: 376px;
+  height: 89px;
+  background-color: #DB8876;
+  border-radius: 5px;
+  font-size: 24px;
+  z-index: 1;
 }
 
 .photographer-icon {
@@ -209,39 +271,96 @@ header {
   overflow: hidden;
 }
 
-.photographer-243 img {
+.photographer-img-243 {
   scale: 1.4;
 }
 
-.photographer-930 img {
+.photographer-img-930 {
   position: absolute;
   top: 60px;
   scale: 2.5;
 }
 
-.photographer-82 img {
+.photographer-img-82 {
   scale: 1.25;
   position: absolute;
   left: 23px;
   top: 3px;
 }
 
-.photographer-527 img {
+.photographer-img-527 {
   position: absolute;
   scale: 1.2;
   bottom: -76px;
 }
 
-.photographer-925 img {
+.photographer-img-925 {
   position: absolute;
   scale: 2.5;
   top: 65px;
 }
 
-.photographer-195 img {
+.photographer-img-195 {
   position: absolute;
   scale: 2.7;
   top: 65px;
+}
+
+.photographer-media-card {
+  width: 26%;
+  min-width: 350px;
+  max-width: 350px;
+  min-height: 351px;
+  color: #901c1c;
+  font-size: 1.5em;
+}
+
+.photographer-media-image {
+  width: 100%;
+  min-width: 350px;
+  height: 300px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.photographer-media-image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.photographer-media-image video {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.photographer-media-title-price-like-heart {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.photographer-media-title {
+  width: 240px;
+}
+
+.photographer-media-price-likes-heart {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+.photographer-media-likes-heart {
+  display: flex;
+  align-items: center;
+}
+
+.photographer-media-likes {
+  margin-right: 5px;
 }
 
 /* @import "./base/normalize";

@@ -1,0 +1,55 @@
+.photographer-media-card {
+  width: 26%;
+  min-width: 350px;
+  max-width: 350px;
+  min-height: 351px;
+  color: #901c1c;
+  font-size: 1.5em;
+}
+
+.photographer-media-image {
+  width: 100%;
+  min-width: 350px;
+  height: 300px;
+  border-radius: 5px;
+  overflow: hidden;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.photographer-media-title-price-like-heart {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+
+  overflow: hidden;
+}
+
+.photographer-media-title{
+  width: 240px;
+}
+
+.photographer-media-price-likes-heart {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+.photographer-media-likes-heart {
+  display: flex;
+  align-items: center;
+}
+
+.photographer-media-likes {
+  margin-right: 5px;
+}

@@ -1,5 +1,5 @@
-import newPhotographerFactory from "../factories/DispatchPhotographerFactory.js";
-import { createArticlePhotographer } from "../components/articlephotographer.js";
+import { newPhotographerFactory } from "../factories/DispatchPhotographerFactory.js";
+import { createArticlePhotographer } from "../components/index/ArticlePhotographer.js";
 
 /**
  * Affichage de chaque photographe sous forme d'article.

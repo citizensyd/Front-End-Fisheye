@@ -1,4 +1,4 @@
-import { photographerLink } from "../components/photographerLink.js";
+import { photographerLink } from "../components/links/photographerLink.js";
 
 // creation of class to implement element in the article of each photographer
 class indexPhotographer {
@@ -42,10 +42,11 @@ class indexPhotographer {
   }
 
   get portrait() {
-    const containerPicture = document.createElement("div");
+    const containerPicture = document.createElement("div");    
     containerPicture.classList.add("photographer-icon");
     const picture = `assets/photographers/${this._portrait}`;
     const photographerPicture = document.createElement("img");
+    photographerPicture.classList.add(`photographer-img-${this._id}`)
     photographerPicture.setAttribute("src", picture);
     photographerPicture.setAttribute("alt", "");
     photographerPicture.addEventListener("click", photographerLink);
@@ -54,4 +55,31 @@ class indexPhotographer {
   }
 }
 
-export default indexPhotographer;
+class pagePhotographer extends indexPhotographer {
+  /**
+   *
+   * @param {string} data
+   */
+  constructor(data) {
+    super(data);
+  }
+  get name() {
+    const photographerName = document.createElement("h2");
+    photographerName.textContent = this._name;
+    return photographerName;
+  }
+
+  get portrait() {
+    const containerPicture = document.createElement("div");
+    containerPicture.classList.add(`photographer-${this._id}`);
+    containerPicture.classList.add("photographer-icon");
+    const picture = `assets/photographers/${this._portrait}`;
+    const photographerPicture = document.createElement("img");
+    photographerPicture.setAttribute("src", picture);
+    photographerPicture.setAttribute("alt", "");
+    containerPicture.appendChild(photographerPicture);
+    return containerPicture;
+  }
+}
+
+export { indexPhotographer, pagePhotographer };

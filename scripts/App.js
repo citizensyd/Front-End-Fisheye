@@ -1,13 +1,13 @@
-import { PhotographersApi } from "../scripts/api/Api.js";
-import { displayPhotographerIndex } from "./pages/Index.js";
+import { displayPhotographerIndex } from "../scripts/pages/index.js";
+import { PhotographerDataProvider } from "./api/PhotographerDataProvider.js";
 
 class App {
   constructor() {
-    this.photographersApi = new PhotographersApi('/data/photographers.json');
+    this.PhotographerDataProvider = new PhotographerDataProvider;
   }
 
   async main() {
-    const photographersData = await this.photographersApi.getPhotographers();
+    const photographersData = await this.PhotographerDataProvider.photographers();
     displayPhotographerIndex(photographersData);
   }
 }

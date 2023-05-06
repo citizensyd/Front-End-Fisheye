@@ -5,16 +5,17 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Fisheye - photographe </title>
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <img src="assets/images/logo.png" tabindex="1" class="logo" />
     </header>
     <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>
+      <section class="photograph-header">
+        <button class="contact_button" tabindex="3" onclick="displayModal()">Contactez-moi</button>
+      </section>
     </main>
     <div id="contact_modal">
 			<div class="modal">
@@ -33,10 +34,14 @@
 		</div>
     <script src="/scripts/utils/contactForm.js"></script>
     <script type="module" src="scripts/api/Api.js"></script>
-    <script type="module" src="scripts/components/ArticlePhotographer.js"></script>
-    <script type="module" src="scripts/components/photographerLink.js"></script>
-    <script type="module" src="scripts/components/GetIdFromUrl.js"></script>
     <script type="module" src="scripts/pages/PagePhotographer.js"></script>
+    <script type="module" src="scripts/layout/SectionMediaPhotographer.js"></script>
+    <script type="module" src="scripts/components/photographer/HeaderPhotographer.js"></script>
+    <script type="module" src="scripts/components/photographer/DisplayPhotographerMedia.js"></script>
+    <script type="module" src="scripts/components/photographer/DisplayPhotographerHeader.js"></script>
+    <script type="module" src="scripts/components/photographer/DisplayPhotographerPriceElement.js"></script>
+    <script type="module" src="scripts/components/GetIdFromUrl.js"></script>
+    <script type="module" src="scripts/components/links/MediaLink.js"></script>
     <script type="module" src="scripts/factories/ClassPhotographerFactory.js"></script>
     <script type="module" src="scripts/factories/DispatchPhotographerFactory.js"></script>
   </body>
