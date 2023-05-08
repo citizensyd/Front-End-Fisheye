@@ -10,7 +10,7 @@ class Modal {
     this.messageInput = null;
     this.main = document.querySelector("main");
 
-    this.onKeyDown = this.onKeyDown.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this); 
     this.buttonDisplayModal = this.buttonDisplayModal.bind(this);
     this.buttonCloseModal = this.buttonCloseModal.bind(this);
   }
@@ -110,6 +110,8 @@ class Modal {
   buttonCloseModal() {
     const button = document.querySelector(".modal-header img");
     button.addEventListener("click", () => {
+        this.main.setAttribute('aria-hidden', 'false');
+        this.modal.setAttribute('aria-hidden', 'true');
       this.close();
     });
   }
