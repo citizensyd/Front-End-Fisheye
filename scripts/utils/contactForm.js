@@ -1,39 +1,48 @@
 class Modal {
-    constructor(options) {
-      this.options = options;
-      this.modal = null;
-      this.closeButton = null;
-      this.form = null;
-      this.prenomInput = null;
-      this.nomInput = null;
-      this.emailInput = null;
-      this.messageInput = null;
-      
-  
-      this.buttonDisplayModal = this.buttonDisplayModal.bind(this);
-      this.buttonCloseModal = this.buttonCloseModal.bind(this);
+  constructor(options) {
+    this.options = options;
+    this.modal = null;
+    this.closeButton = null;
+    this.form = null;
+    this.prenomInput = null;
+    this.nomInput = null;
+    this.emailInput = null;
+    this.messageInput = null;
+    this.main = document.querySelector("main");
+
+    this.onKeyDown = this.onKeyDown.bind(this);
+    this.buttonDisplayModal = this.buttonDisplayModal.bind(this);
+    this.buttonCloseModal = this.buttonCloseModal.bind(this);
+  }
+
+  display(options) {
+    if (!this.modal) {
+      this.create(options);
     }
-  
-    display(options) {
-      if (!this.modal) {
-        this.create(options);
-      }
-      this.modal.classList.add("modal--visible");
+    this.modal.classList.add("modal--visible");
+    document.addEventListener("keydown", this.onKeyDown);
+  }
+
+  close() {
+    if (this.modal) {
+      this.modal.classList.remove("modal--visible");
+      document.removeEventListener("keydown", this.onKeyDown);
     }
-  
-    close() {
-      if (this.modal) {
-        this.modal.classList.remove("modal--visible");
-      }
+  }
+
+  onKeyDown(e) {
+    if (e.key === " "|| e.key === "Enter" || e.key === "Escape") {
+      this.close();
     }
-  
-    create(options) {
-      const modalTemplate = `
+  }
+
+  create(options) {
+    const modalTemplate = `
         <div class="modal-background contact_modal">    
             <div class="modal" role="dialog" aria-describedby="send-message">
                 <div class="modal-header">
                     <h2>Contactez-moi<br>${options[0].name}</h2>
-                    <img src="assets/icons/close.svg"/>
+                    <img  src="assets/icons/close.svg" tabindex="0"/>
                 </div>
                 <form>
                     <div>
@@ -57,49 +66,53 @@ class Modal {
             </div>
         </div>
       `;
+
+    const modalElement = document.createElement("div");
+    modalElement.innerHTML = modalTemplate.trim();
+    this.modal = modalElement.querySelector(".contact_modal");
+    console.log(this.modal);
+    this.closeButton = this.modal.querySelector(".modal-header img");
+    this.form = modalElement.querySelector("form");
+    this.prenomInput = modalElement.querySelector("#prenom");
+    this.nomInput = modalElement.querySelector("#nom");
+    this.emailInput = modalElement.querySelector("#email");
+    this.messageInput = modalElement.querySelector("#message");
+
+    this.form.addEventListener("submit", this.onSubmit.bind(this));
+    this.buttonDisplayModal();
+
+    document.body.appendChild(modalElement.firstChild);
+    console.log(this.closeButton);
     
-      const modalElement = document.createElement("div");
-      modalElement.innerHTML = modalTemplate.trim();
-      this.modal = modalElement.querySelector(".contact_modal");
-      this.closeButton = modalElement.querySelector(".modal-close-button");
-      this.form = modalElement.querySelector("form");
-      this.prenomInput = modalElement.querySelector("#prenom");
-      this.nomInput = modalElement.querySelector("#nom");
-      this.emailInput = modalElement.querySelector("#email");
-      this.messageInput = modalElement.querySelector("#message");
-  
-      this.form.addEventListener("submit", this.onSubmit.bind(this));
-      this.buttonDisplayModal();
-    
-      document.body.appendChild(modalElement.firstChild);
-    }
-  
-    onSubmit(e) {
-      e.preventDefault();
-      console.log(`Le formulaire a été envoyé avec les données suivantes :
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+    console.log(`Le formulaire a été envoyé avec les données suivantes :
         Prénom : ${this.prenomInput.value}
         Nom : ${this.nomInput.value}
         Email : ${this.emailInput.value}
         Message : ${this.messageInput.value}`);
-      this.close();
-    }
-  
-    buttonDisplayModal(option) {
-
-      const button = document.querySelector(".contact_button");
-      button.addEventListener("click", () => {
-        this.display(option);
-        this.buttonCloseModal();
-      });
-    }
-  
-    buttonCloseModal() {
-      const button = document.querySelector(".modal-header img");
-      button.addEventListener("click", () => {
-        this.close();
-      });
-    }
+    this.close();
   }
-  
-  export { Modal };
-  
+
+  buttonDisplayModal(option) {
+    const button = document.querySelector(".contact_button");
+    button.addEventListener("click", () => {
+      this.display(option);
+      this.buttonCloseModal();
+      this.closeButton.focus();
+      this.main.setAttribute('aria-hidden', 'true');
+      this.modal.setAttribute('aria-hidden', 'false');
+    });
+  }
+
+  buttonCloseModal() {
+    const button = document.querySelector(".modal-header img");
+    button.addEventListener("click", () => {
+      this.close();
+    });
+  }
+}
+
+export { Modal };
