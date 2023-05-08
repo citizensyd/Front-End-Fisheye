@@ -6,7 +6,7 @@
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Fisheye - photographe </title>
+    <title>Fisheye - photographe</title>
   </head>
   <body>
     <header>
@@ -14,26 +14,13 @@
     </header>
     <main id="main">
       <section class="photograph-header">
-        <button class="contact_button" tabindex="3" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button" tabindex="3" >Contactez-moi</button>
       </section>
     </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="/scripts/utils/contactForm.js"></script>
     <script type="module" src="scripts/api/Api.js"></script>
+    <script type="module" src="scripts/api/PhotographerDataProvider.js"></script>
+    <script type="module" src="scripts/api/PhotographerObjectProvider.js"></script>
+    <script type="module" src="scripts/utils/contactForm.js"></script>
     <script type="module" src="scripts/pages/PagePhotographer.js"></script>
     <script type="module" src="scripts/layout/SectionMediaPhotographer.js"></script>
     <script type="module" src="scripts/components/photographer/HeaderPhotographer.js"></script>

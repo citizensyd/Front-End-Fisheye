@@ -1,4 +1,6 @@
 // get id of photographer
-export const getIdFromUrl = () => {
+const getIdFromUrl = () => {
   return parseInt(new URLSearchParams(window.location.search).get("id"));
 };
+
+export { getIdFromUrl };
