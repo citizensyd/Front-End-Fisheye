@@ -267,6 +267,65 @@ header {
   margin-top: 15px;
 }
 
+.lightbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 1253px;
+  height: 100%;
+  background-color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 500;
+}
+.lightbox-media {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.lightbox-media-cross {
+  position: absolute;
+  top: 10px;
+  right: 50px;
+  cursor: pointer;
+}
+.lightbox-media-picture {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  margin: 0 15px;
+  height: 800px;
+  width: 1050px;
+}
+.lightbox-media-picture p {
+  position: absolute;
+  bottom: -50px;
+  font-size: 24px;
+  color: #901C1C;
+}
+.lightbox-media-picture img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.lightbox-media-picture video {
+  width: 100%;
+  height: auto;
+}
+
+.less {
+  cursor: pointer;
+}
+
+.more {
+  cursor: pointer;
+}
+
 .contact_button, .contact_button_send {
   font-size: 20px;
   font-weight: bold;
@@ -357,6 +416,7 @@ header {
   height: 300px;
   border-radius: 5px;
   overflow: hidden;
+  cursor: pointer;
 }
 .photographer-media-image img {
   width: 100%;

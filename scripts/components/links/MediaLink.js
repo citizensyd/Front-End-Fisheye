@@ -1,7 +1,8 @@
 // redirection to the photographer's page
+import { Lightbox } from "../photographer/DisplayLightbox.js";
 export const mediaLink = (event) => {
-    const target = event.target;
-    const article = target.closest("article");
-    const photographerId = article.className.split("-")[1];
-    window.location.href = "/photographer.html?id=" + photographerId;
-  };
+  const lightbox = new Lightbox();
+  const target = event.target;
+  const mediaId = parseInt(target.id);
+  lightbox.create(mediaId);
+};

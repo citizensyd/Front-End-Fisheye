@@ -4,6 +4,7 @@ import { DisplayPhotographerPriceElement } from "../components/photographer/Disp
 import { DisplayPhotographerMedia } from "../components/photographer/DisplayPhotographerMedia.js";
 import { PhotographerDataProvider } from "../api/PhotographerDataProvider.js";
 import { Modal } from "../utils/contactForm.js";
+import { Lightbox } from "../components/photographer/DisplayLightbox.js";
 
 //
 class photographerPage {
@@ -16,6 +17,7 @@ class photographerPage {
     this.PriceElement = new DisplayPhotographerPriceElement();
     this.photographer = new PhotographerDataProvider;
     this.modal = new Modal();
+    this.lightbox = new Lightbox;
   }
 
   async DisplayPhotographerPage() {
@@ -34,6 +36,7 @@ class photographerPage {
 
     // Creation of Modal
     this.modal.buttonDisplayModal(photographer);
+
   }
 }
 

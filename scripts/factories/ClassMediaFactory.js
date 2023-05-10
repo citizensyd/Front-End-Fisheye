@@ -20,9 +20,12 @@ class mediaPhotographer {
 
     if (this._isVideo) {
       mediaElement = document.createElement("video");
+      mediaElement.id = this._id;
       /* mediaElement.setAttribute("controls", ""); */ //if you want play video directly
     } else {
       mediaElement = document.createElement("img");
+      mediaElement.id = this._id;
+
     }
     
     mediaElement.setAttribute("src", `assets/photos/${name}/${this._media}`);
