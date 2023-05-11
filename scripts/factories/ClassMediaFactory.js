@@ -97,6 +97,7 @@ class mediaPhotographer {
     mediaLikes.textContent = `${this._likes}`;
     return mediaLikes;
   }
+
 }
 
 export { mediaPhotographer};

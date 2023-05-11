@@ -346,16 +346,35 @@ header {
   height: 50px;
 }
 
-.price {
+.photographer-like-price {
   position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   right: -75px;
+  padding: 0 50px 10px 50px;
   top: 400px;
   width: 376px;
   height: 89px;
-  background-color: #DB8876;
+  background-color: #db8876;
   border-radius: 5px;
   font-size: 24px;
+  font-weight: bold;
   z-index: 1;
+}
+
+.photographer-like-heart {
+  display: flex;
+  align-items: center;
+  order: 1;
+}
+
+.photographer-like-heart img {
+  padding-left: 10px;
+}
+
+.photographer-price {
+  order: 2;
 }
 
 .photographer-icon {
@@ -453,6 +472,7 @@ header {
 .photographer-media-likes-heart {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .photographer-media-likes {

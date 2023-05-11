@@ -5,7 +5,6 @@ const photographerMediaCard = (() => {
     const { name } = data;
     const photographer = document.createElement("div");
     photographer.classList.add("photographer-merdia-card");
-    console.log(photographer);
     photographer.setAttribute("aria-label", `Profil du photographe ${name}`);
     photographer.setAttribute("tabindex", tabIndex++);
     return photographer;

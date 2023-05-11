@@ -1,11 +1,31 @@
-.price{
-    position: absolute;
-    right: -75px;
-    top: 400px;
-    width: 376px;
-    height: 89px;
-    background-color: #DB8876;
-    border-radius: 5px;
-    font-size: 24px;
-    z-index: 1;
+.photographer-like-price {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  right: -75px;
+  padding: 0 50px 10px 50px;
+  top: 400px;
+  width: 376px;
+  height: 89px;
+  background-color: #db8876;
+  border-radius: 5px;
+  font-size: 24px;
+  font-weight: bold;
+  z-index: 1;
+}
+
+.photographer-like-heart {
+display: flex;
+align-items: center;
+order: 1;
+}
+
+.photographer-like-heart img{
+    padding-left: 10px;
+    }
+
+
+.photographer-price{
+order: 2;
 }

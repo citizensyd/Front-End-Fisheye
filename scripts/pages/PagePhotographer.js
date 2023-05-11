@@ -5,6 +5,7 @@ import { DisplayPhotographerMedia } from "../components/photographer/DisplayPhot
 import { PhotographerDataProvider } from "../api/PhotographerDataProvider.js";
 import { Modal } from "../utils/contactForm.js";
 import { Lightbox } from "../components/photographer/DisplayLightbox.js";
+import { CounterLike } from "../components/photographer/CounterLike.js";
 
 //
 class photographerPage {
@@ -18,6 +19,7 @@ class photographerPage {
     this.photographer = new PhotographerDataProvider;
     this.modal = new Modal();
     this.lightbox = new Lightbox;
+    this.counterLike = new CounterLike(this.id);
   }
 
   async DisplayPhotographerPage() {
@@ -36,6 +38,9 @@ class photographerPage {
 
     // Creation of Modal
     this.modal.buttonDisplayModal(photographer);
+
+    // Creation of counter like
+    this.counterLike.init()
 
   }
 }
