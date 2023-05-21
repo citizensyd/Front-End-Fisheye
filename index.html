@@ -2,22 +2,24 @@
 <html lang="fr">
   <head>
     <link href="css/main.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet" />
     <title>Fisheye</title>
   </head>
   <body>
     <header>
-        <img src="assets/images/logo.png" class="logo" tabindex="1" aria-label="Accueil" alt="Fisheye Home page"/>
-        <h1 tabindex="2">Nos photographes</h1>
+      <a href="index.html" tabindex="1" aria-label="Accueil" >
+        <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page"/>
+      </a>
+      <h1 tabindex="2">Nos photographes</h1>
     </header>
     <main id="main">
-        <div class="photographer_section"></div>
-    </main>
+      <div class="photographer_section"></div>
+    </main>    
     <script type="module" src="scripts/app.js"></script>
     <script type="module" src="scripts/api/Api.js"></script>
-    <script type="module" src="scripts/api/PhotographerDataProvider.js"></script>    
+    <script type="module" src="scripts/api/PhotographerDataProvider.js"></script>
     <script type="module" src="scripts/components/index/ArticlePhotographer.js"></script>
     <script type="module" src="scripts/components/links/photographerLink.js"></script>
     <script type="module" src="scripts/components/GetIdFromUrl.js"></script>
@@ -25,6 +27,6 @@
     <script type="module" src="scripts/factories/DispatchPhotographerFactory.js"></script>
     <script type="module" src="scripts/factories/ClassPhotographerFactory.js"></script>
     <script type="module" src="scripts/pages/Index.js"></script>
-    
+    <script type="module" src="scripts/utils/KeyboardNavigationIndex.js"></script>
   </body>
 </html>

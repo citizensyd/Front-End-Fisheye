@@ -1,22 +1,35 @@
 import { headerPhotographer } from "./HeaderPhotographer.js";
 import { PhotographerObjectProvider } from "../../api/PhotographerObjectProvider.js";
+import { PhotographerDataProvider } from "../../api/PhotographerDataProvider.js";
 
 class displayPhotographerHeader {
-  constructor() {
+  constructor(photographerData) {
+    this.photographerData = photographerData;
     this.objectProvider = new PhotographerObjectProvider();
+    this.photographerDataProvider = new PhotographerDataProvider();
   }
+
+  buttonContactMe(){
+    const buttonContactMe = document.createElement("button");
+    buttonContactMe.classList.add("contact_button");
+    buttonContactMe.setAttribute("aria-label", "Contact me");
+    buttonContactMe.setAttribute("tabindex", 3);
+    buttonContactMe.textContent = "Contactez-moi";
+    return buttonContactMe;
+  }
+
   async displayPhotographerHeader(id, photographersHeaderWrapper) {
     const photographerObject = await this.objectProvider.photographerObject(id);
-    const photographerDivDOM = headerPhotographer(photographerObject);
-
+    const photographerDivDOM = headerPhotographer(this.photographerData);
     photographerObject.portrait.setAttribute("tabindex", 4);
-    photographerDivDOM.append(
-        photographerObject.name,
-        photographerObject.city,
-        photographerObject.tagline
-    );
 
-    photographersHeaderWrapper.append(photographerObject.portrait, photographerDivDOM);
+    photographerDivDOM.append(
+      photographerObject.name,
+      photographerObject.city,
+      photographerObject.tagline
+      );
+
+    photographersHeaderWrapper.append(photographerDivDOM,this.buttonContactMe(), photographerObject.portrait);
   }
 }
 export { displayPhotographerHeader };

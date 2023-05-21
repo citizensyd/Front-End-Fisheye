@@ -24,9 +24,7 @@ class PhotographerDataProvider {
     return photographerMedia;
   }
   async UniqueMedia(id) {
-    const photographerUniqueMedia = await this.UniqueMediaApi.getUniqueMedia(
-      id
-    );
+    const photographerUniqueMedia = await this.UniqueMediaApi.getUniqueMedia(id);
     return photographerUniqueMedia;
   }
 }

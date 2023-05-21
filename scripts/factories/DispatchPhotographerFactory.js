@@ -8,11 +8,11 @@ class newPhotographerFactory {
       return new indexPhotographer(data);
     } else if (type === "pagePhotographer") {
       return new pagePhotographer(data[0]);
-    } else if (type === "mediaPhotographer"){
+    } else if (type === "mediaPhotographer") {
       return new mediaPhotographer(data);
-    } else if (type === "mediaUniquePhotographer"){
+    } else if (type === "mediaUniquePhotographer") {
       return new mediaPhotographer(data[0]);
-    }else {
+    } else {
       throw "Unknown type format";
     }
   }

@@ -1,9 +1,9 @@
-import { displayPhotographerIndex } from "../scripts/pages/index.js";
+import { displayPhotographerIndex } from "./pages/Index.js";
 import { PhotographerDataProvider } from "./api/PhotographerDataProvider.js";
 
 class App {
   constructor() {
-    this.PhotographerDataProvider = new PhotographerDataProvider;
+    this.PhotographerDataProvider = new PhotographerDataProvider();
   }
 
   async main() {

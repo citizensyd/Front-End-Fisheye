@@ -18,5 +18,13 @@ form {
     height: 68px;
     border: none;
     border-radius: 5px;
+    padding-left: 20px;
+    color: #312e2e;
+    caret-color: #312e2e;
+
+    &:focus{
+      padding: 20px;
+      outline-color: #737373;
+    }
   }
 }

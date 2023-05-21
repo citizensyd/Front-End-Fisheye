@@ -11,7 +11,7 @@ class mediaPhotographer {
     this._date = data.date;
     this._price = data.price;
   }
-  
+
   get media() {
     const containerMedia = document.createElement("div");
     const name = document.querySelector("h2").textContent.split(" ")[0];
@@ -25,13 +25,12 @@ class mediaPhotographer {
     } else {
       mediaElement = document.createElement("img");
       mediaElement.id = this._id;
-
     }
-    
+
     mediaElement.setAttribute("src", `assets/photos/${name}/${this._media}`);
-    mediaElement.setAttribute("alt", "");
+    mediaElement.setAttribute("alt", `${this._title}`);
     mediaElement.addEventListener("click", mediaLink);
-    
+
     containerMedia.appendChild(mediaElement);
     return containerMedia;
   }
@@ -52,7 +51,7 @@ class mediaPhotographer {
     const name = document.querySelector("h2").textContent.split(" ")[0];
     containerPicture.classList.add("photographer-media-image");
     const picture = `assets/photos/${name}/${this._image}`;
-    const mediaPicture = document.createElement("img");    
+    const mediaPicture = document.createElement("img");
     mediaPicture.setAttribute("src", picture);
     mediaPicture.setAttribute("alt", "");
     mediaPicture.addEventListener("click", mediaLink);
@@ -63,7 +62,7 @@ class mediaPhotographer {
   get date() {
     return this._date;
   }
-  
+
   get id() {
     return this._id;
   }
@@ -74,7 +73,7 @@ class mediaPhotographer {
 
   get title() {
     const mediaTitle = document.createElement("span");
-    mediaTitle.classList.add("photographer-media-title")
+    mediaTitle.classList.add("photographer-media-title");
     mediaTitle.textContent = this._title;
     return mediaTitle;
   }
@@ -83,7 +82,6 @@ class mediaPhotographer {
     const mediaJustTitle = this._title;
     return mediaJustTitle;
   }
-
 
   get price() {
     const mediaPrice = document.createElement("span");
@@ -97,7 +95,6 @@ class mediaPhotographer {
     mediaLikes.textContent = `${this._likes}`;
     return mediaLikes;
   }
-
 }
 
-export { mediaPhotographer};
+export { mediaPhotographer };

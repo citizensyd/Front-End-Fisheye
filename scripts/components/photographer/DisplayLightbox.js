@@ -1,9 +1,11 @@
 import { PhotographerDataProvider } from "../../api/PhotographerDataProvider.js";
 import { getIdFromUrl } from "../GetIdFromUrl.js";
+import { KeyboardNavigationPhotographer } from "../../utils/KeyboardNavigationPhotographer.js";
 
 class Lightbox {
-  constructor() {
+  constructor(previousCurrentElementIndex) {
     // Initialize class properties
+    this.previousCurrentElementIndex = previousCurrentElementIndex;
     this.id = getIdFromUrl();
     this.media = new PhotographerDataProvider();
     this.lightbox = null;
@@ -18,7 +20,6 @@ class Lightbox {
     this.arrowLeft = null;
     this.arrowRight = null;
     this.mediaIncorporate = null;
-
   }
 
   // Displays the lightbox modal
@@ -49,7 +50,11 @@ class Lightbox {
     if (this.lightbox) {
       this.lightbox.classList.remove("modal--visible");
       document.removeEventListener("keydown", this.onKeyDown);
+      document.removeEventListener("keydown", this.onKeyLeft);
+      document.removeEventListener("keydown", this.onKeyRight);
       this.lightbox.parentNode.removeChild(this.lightbox);
+      this.KeyboardNavigationPhotographer = new KeyboardNavigationPhotographer(this.previousCurrentElementIndex);
+      this.KeyboardNavigationPhotographer.focusElementPhotographer();
     }
   }
   // Handles keyboard input to close the lightbox
@@ -87,27 +92,24 @@ class Lightbox {
     // Find the index of media to display it
     this.index = this.medias.findIndex((photo) => photo.id === media[0].id);
     if (this.medias[this.index].image === undefined) {
-      this.mediaIncorporate = `<video src="assets/photos/${this.name}/${
-        this.medias[this.index].video
-      }" alt="" controls></video>`;
+      console.log(this.medias[this.index]);
+      this.mediaIncorporate = `<video src="assets/photos/${this.name}/${this.medias[this.index].video}" alt="${this.medias[this.index].title}" controls></video>`;
     } else {
-      this.mediaIncorporate = `<img src="assets/photos/${this.name}/${
-        this.medias[this.index].image
-      }" alt="">`;
+      this.mediaIncorporate = `<img src="assets/photos/${this.name}/${this.medias[this.index].image}" alt="${this.medias[this.index].title}">`;
     }
 
     // Creation template lightbox
     const lightboxTemplate = `
           <div class="modal-background contact_modal">    
-            <div class="lightbox" role="dialog" aria-label="Galerie d'images et de vidéos" aria-describedby="image-video">
-               <div class="lightbox-media">
-                <img class="less" src="assets/images/arrow-left.png" alt="">
+            <div class="lightbox" role="dialog" aria-label="image closeup view"                >
+               <div class="lightbox-media">                
+                  <img class="less" role="link" src="assets/images/arrow-left.png" alt="Previous image">               
                   <div class="lightbox-media-picture">
                     ${this.mediaIncorporate}
                     <p>${this.medias[this.index].title}</p>
                   </div>
-                <img class="more" src="assets/images/arrow-right.png" alt="">
-                <img class="lightbox-media-cross" tabindex="0" src="assets/images/cross.png" alt="">
+                <img class="more" role="link" src="assets/images/arrow-right.png" alt="Next image">
+                <img class="lightbox-media-cross" role="button" tabindex="0" src="assets/images/cross.png" alt="Close dialog">
                </div>
             </div>
           </div>
@@ -130,24 +132,20 @@ class Lightbox {
       this.index = 0;
     }
     if (this.medias[this.index].image === undefined) {
-      this.mediaIncorporate = `<video src="assets/photos/${this.name}/${
-        this.medias[this.index].video
-      }" alt="" controls></video><p>${this.medias[this.index].title}</p>`;
+      this.mediaIncorporate = `<video src="assets/photos/${this.name}/${this.medias[this.index].video}" alt="" controls></video><p>${this.medias[this.index].title}</p>`;
     } else {
-      this.mediaIncorporate = `<img src="assets/photos/${this.name}/${
-        this.medias[this.index].image
-      }" alt=""><p>${this.medias[this.index].title}</p>`;
+      this.mediaIncorporate = `<img src="assets/photos/${this.name}/${this.medias[this.index].image}" alt=""><p>${this.medias[this.index].title}</p>`;
     }
     const newMedia = document.createElement("div");
     newMedia.classList.add("lightbox-media-picture");
-    newMedia.innerHTML = this.mediaIncorporate;    
+    newMedia.innerHTML = this.mediaIncorporate;
 
     const oldMedia = document.querySelector(".lightbox-media-picture");
     const parent = oldMedia.parentNode;
 
     parent.replaceChild(newMedia, oldMedia);
   }
- 
+
   // Button to close lighbox
   buttonCloseModal() {
     this.closeButton.focus();

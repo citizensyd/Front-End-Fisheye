@@ -5,43 +5,46 @@ import { DisplayPhotographerMedia } from "../components/photographer/DisplayPhot
 import { PhotographerDataProvider } from "../api/PhotographerDataProvider.js";
 import { Modal } from "../utils/contactForm.js";
 import { Lightbox } from "../components/photographer/DisplayLightbox.js";
-import { CounterLike } from "../components/photographer/CounterLike.js";
+import { Menu } from "../components/photographer/Menu.js";
+import { KeyboardNavigationPhotographer } from "../utils/KeyboardNavigationPhotographer.js";
+import { MenuKeyboard } from "../components/photographer/MenuKeyboard.js";
 
 //
 class photographerPage {
   constructor() {
-    this.$photographersHeaderWrapper =
-      document.querySelector(".photograph-header");
+    this.$photographersHeaderWrapper = document.querySelector(".photograph-header");
     this.id = getIdFromUrl();
-    this.Header = new displayPhotographerHeader();
     this.media = new DisplayPhotographerMedia();
     this.PriceElement = new DisplayPhotographerPriceElement();
-    this.photographer = new PhotographerDataProvider;
+    this.photographerDataProvider = new PhotographerDataProvider();
+    this.photographerData = null;
     this.modal = new Modal();
-    this.lightbox = new Lightbox;
-    this.counterLike = new CounterLike(this.id);
+    this.lightbox = new Lightbox();
+    this.photographerMedia = null;
   }
-
+  
   async DisplayPhotographerPage() {
-    const photographer = await this.photographer.photographer(this.id);
+    this.photographerData = await this.photographerDataProvider.photographer(this.id);
+    this.Header = new displayPhotographerHeader(this.photographerData);
     // Creation of header
-    await this.Header.displayPhotographerHeader(
-      this.id,
-      this.$photographersHeaderWrapper
-    );
-
-    // Vreation of Media Section
+    await this.Header.displayPhotographerHeader(this.id, this.$photographersHeaderWrapper);
+    
+    // Initialisation of menu
     await this.media.DisplayPhotographerMedia(this.id);
-
+    
     // Creation of Price Element
-    await this.PriceElement.DisplayPhotographerPriceElement(this.id);
-
+    /*     await this.PriceElement.DisplayPhotographerPriceElement(this.id); */
+    
     // Creation of Modal
-    this.modal.buttonDisplayModal(photographer);
-
-    // Creation of counter like
-    this.counterLike.init()
-
+    this.modal.buttonDisplayModal(this.photographerData);
+    
+    this.menu = new Menu();
+    
+    this.KeyboardNavigationPhotographer = new KeyboardNavigationPhotographer();
+    this.KeyboardNavigationPhotographer.setupEventListeners();
+    /* this.MenuKeyboardNavigation.setupEventListenersMenu(); */
+    
+    new MenuKeyboard();    
   }
 }
 

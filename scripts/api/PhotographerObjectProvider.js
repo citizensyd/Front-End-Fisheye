@@ -15,14 +15,14 @@ class PhotographerObjectProvider {
         name: photographerName,
         city: photographerCity,
         tagline: photographerTagline,
-        price: photographerPrice
+        price: photographerPrice,
       } = photographer;
       return {
         portrait: photographerPortrait,
         name: photographerName,
         city: photographerCity,
         tagline: photographerTagline,
-        price: photographerPrice
+        price: photographerPrice,
       };
     });
     return photographersObject;
@@ -47,29 +47,31 @@ class PhotographerObjectProvider {
     };
   }
 
-  async photographerObjectMedia(id){
+  async photographerObjectMedia(id) {
     const photographersData = await this.photographerDataProvider.UniqueMedia(id);
-    const photographerObjectMedia = new newPhotographerFactory(photographersData, "mediaUniquePhotographer");
+    const photographerObjectMedia = new newPhotographerFactory(
+      photographersData,
+      "mediaUniquePhotographer"
+    );
     const {
-        id: mediaId,
-        photographerId: mediaPhotographerId,
-        title: mediaTitle,
-        justTitle: mediaJustTitle,
-        media: mediaPicture,
-        likes: mediaLikes,
-        date: mediaDate,
-        price: mediaPrice,
-
+      id: mediaId,
+      photographerId: mediaPhotographerId,
+      title: mediaTitle,
+      justTitle: mediaJustTitle,
+      media: mediaPicture,
+      likes: mediaLikes,
+      date: mediaDate,
+      price: mediaPrice,
     } = photographerObjectMedia;
     return {
-        id: mediaId,
-        photographerId: mediaPhotographerId,
-        title: mediaTitle,
-        justTitle: mediaJustTitle,
-        media: mediaPicture,
-        likes: mediaLikes,
-        date: mediaDate,
-        price: mediaPrice,
+      id: mediaId,
+      photographerId: mediaPhotographerId,
+      title: mediaTitle,
+      justTitle: mediaJustTitle,
+      media: mediaPicture,
+      likes: mediaLikes,
+      date: mediaDate,
+      price: mediaPrice,
     };
   }
 }

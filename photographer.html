@@ -2,20 +2,32 @@
 <html lang="fr">
   <head>
     <link href="css/main.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Fisheye - photographe</title>
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" tabindex="1" class="logo" />
+      <a href="index.html" tabindex="1" aria-label="Accueil">
+        <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" />
+      </a>
     </header>
     <main id="main">
-      <section class="photograph-header">
-        <button class="contact_button" tabindex="3" >Contactez-moi</button>
-      </section>
+      <section class="photograph-header"></section>
+      <nav class="photographer-menu" tabindex="5">
+        <label id="sort-label">Trier par</label>
+        <div class="photographer-menu-options" role="listbox" aria-labelledby="sort-label" aria-activedescendant="option-popularite">
+          <div class="photographer-menu-option-background"></div>
+          <img class="photographer-menu-option-drop" tabindex="6" id="photographer-menu-button" src="assets/images/drop.png" />
+          <div class="photographer-menu-option-un menu-item" role="option" aria-selected="true">Popularité</div>
+          <div class="photographer-menu-options-hidden">
+            <div class="photographer-menu-option-deux menu-item" role="option">Date</div>
+            <div class="photographer-menu-option-trois menu-item" role="option">Titre</div>
+          </div>
+        </div>
+      </nav>
     </main>
     <script type="module" src="scripts/api/Api.js"></script>
     <script type="module" src="scripts/api/PhotographerDataProvider.js"></script>
@@ -28,10 +40,13 @@
     <script type="module" src="scripts/components/photographer/DisplayPhotographerHeader.js"></script>
     <script type="module" src="scripts/components/photographer/DisplayPhotographerPriceElement.js"></script>
     <script type="module" src="scripts/components/photographer/CounterLike.js"></script>
-    <script type="module" src="scripts/components/photographer/DisplayLightbox.js"></script>    
+    <script type="module" src="scripts/components/photographer/DisplayLightbox.js"></script>
+    <script type="module" src="scripts/components/photographer/MenuKeyboard.js"></script>
+    <script type="module" src="scripts/components/photographer/Menu.js"></script>
     <script type="module" src="scripts/components/GetIdFromUrl.js"></script>
     <script type="module" src="scripts/components/links/MediaLink.js"></script>
     <script type="module" src="scripts/factories/ClassPhotographerFactory.js"></script>
     <script type="module" src="scripts/factories/DispatchPhotographerFactory.js"></script>
+    <script type="module" src="scripts/utils/KeyboardNavigationPhotographer.js"></script>
   </body>
 </html>

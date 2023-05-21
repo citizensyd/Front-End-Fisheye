@@ -42,13 +42,13 @@ class indexPhotographer {
   }
 
   get portrait() {
-    const containerPicture = document.createElement("div");    
+    const containerPicture = document.createElement("div");
     containerPicture.classList.add("photographer-icon");
     const picture = `assets/photographers/${this._portrait}`;
     const photographerPicture = document.createElement("img");
-    photographerPicture.classList.add(`photographer-img-${this._id}`)
+    photographerPicture.classList.add(`photographer-img-${this._id}`);
     photographerPicture.setAttribute("src", picture);
-    photographerPicture.setAttribute("alt", "");
+    photographerPicture.setAttribute("alt", `Portrait du photographe ${this._name}`);
     photographerPicture.addEventListener("click", photographerLink);
     containerPicture.appendChild(photographerPicture);
     return containerPicture;

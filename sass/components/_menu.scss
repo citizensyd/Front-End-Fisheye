@@ -1,0 +1,134 @@
+.photographer-menu {
+  display: flex;
+  max-width: 1240px;
+  margin-top: 20px;
+  margin: 0 auto;
+  height: 100px;
+  padding-bottom: 30px;
+  font-weight: bold;
+  font-size: 18px;
+  label {
+    margin-right: 10px;
+    padding-top: 10px;
+  }
+  &-options {
+    position: relative;
+    height: 200px;
+    width: 170px;
+    overflow: hidden;
+    color: white;
+    z-index: 1;
+  }
+  &-option-un {
+    z-index: 4;
+    background-color: #901c1c;
+    border-radius: 5px 5px 5px 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 170px;
+    height: 69px;
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  &-option-background {
+    position: relative;
+    z-index: 3;
+    background-color: #fff;
+    width: 170px;
+    height: 20px;
+  }
+  &-options-hidden {
+    width: 170px;
+    height: 200px;
+    position: relative;
+    transform: translateY(-100px);
+    z-index: 2;
+  }
+  &-option-deux {
+    background-color: #901c1c;
+    width: 170px;
+    height: 80px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    padding-top: 20px;
+    cursor: pointer;
+    &::after {
+      position: absolute;
+      bottom: 0;
+      content: "";
+      width: 90%;
+      height: 2px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: white;
+    }
+    &::before {
+      position: absolute;
+      top: 20px;
+      content: "";
+      width: 90%;
+      height: 2px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: white;
+    }
+  }
+  &-option-trois {
+    position: absolute;
+    background-color: #901c1c;
+    border-radius: 0 0 5px 5px;
+    width: 170px;
+    height: 69px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    height: 55px;
+    cursor: pointer;
+  }
+  &-option-drop{
+    z-index: 10;
+    position: absolute;
+    top: 29px;
+    right: 20px;
+    cursor: pointer;
+  }
+}
+
+@keyframes down {
+  from {
+    transform: translateY(-86px);
+    color: rgba(255, 255, 255, 0);
+  }
+  to {
+    transform: translateY(29px);
+    color: rgba(255, 255, 255, 1);
+  }
+}
+
+@keyframes up {
+  from {
+    transform: translateY(0px);
+    color: rgba(255, 255, 255, 1);
+  }
+  to {
+    transform: translateY(-86px);
+    color: rgba(255, 255, 255, 0);
+  }
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+.down{
+  animation: down 1s forwards;
+}
+
+.up{
+  animation: up 1s forwards;
+}

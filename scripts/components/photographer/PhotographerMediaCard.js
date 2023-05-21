@@ -1,5 +1,5 @@
 // creation of an item for photographer page
-const photographerMediaCard = (() => {  
+const photographerMediaCard = (() => {
   let tabIndex = 6;
   return (data) => {
     const { name } = data;
@@ -9,6 +9,5 @@ const photographerMediaCard = (() => {
     photographer.setAttribute("tabindex", tabIndex++);
     return photographer;
   };
-  })();
+})();
 export { photographerMediaCard };
-

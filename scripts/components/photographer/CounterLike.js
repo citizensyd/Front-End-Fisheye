@@ -28,14 +28,12 @@ class CounterLike {
 
   // Function to bind event listeners to the like buttons
   bindEventListeners() {
-    document
-      .querySelectorAll(".photographer-media-likes-heart")
-      .forEach((btn) => {
-        btn.addEventListener("click", this.incrementLike.bind(this));
-      });
+    document.querySelectorAll(".photographer-media-likes-heart").forEach((btn) => {
+      btn.addEventListener("click", this.incrementLike.bind(this));
+    });
   }
 
-  // Function to increment like count
+  // Function to increment and decrement like count
   incrementLike(event) {
     const idMedia = event.target
       .closest(".photographer-media-card")
@@ -46,11 +44,12 @@ class CounterLike {
       .querySelector(".photographer-media-likes");
 
     const media = this.newLikesArray.find((m) => m.id === parseInt(idMedia));
-    const oldMediaLike = this.oldMediaLike.find(
-      (m) => m.id === parseInt(idMedia)
-    );
+    const oldMediaLike = this.oldMediaLike.find((m) => m.id === parseInt(idMedia));
     if (oldMediaLike.likes == media.newLike) {
       media.newLike += 1;
+      replaceLike.textContent = media.newLike;
+    } else {
+      media.newLike -= 1;
       replaceLike.textContent = media.newLike;
     }
     // Display the total counter
@@ -59,9 +58,7 @@ class CounterLike {
 
   // Function to display the total like count
   displayTotalCounter() {
-    const allLikes = Array.from(
-      document.querySelectorAll(".photographer-media-likes")
-    )
+    const allLikes = Array.from(document.querySelectorAll(".photographer-media-likes"))
       .map((element) => parseInt(element.textContent))
       .reduce((accumulator, currentValue) => accumulator + currentValue, 0)
       .toString();
@@ -70,7 +67,7 @@ class CounterLike {
     const price = document.querySelector(".photographer-like-price");
     const allLikesInsert = document.createElement("p");
     const likeHeart = document.createElement("div");
-    likeHeart.classList.add("photographer-like-heart")
+    likeHeart.classList.add("photographer-like-heart");
     allLikesInsert.classList.add("photographer-total-like");
     const heartBlack = document.createElement("img");
     heartBlack.src = "assets/images/heart-black.png";
