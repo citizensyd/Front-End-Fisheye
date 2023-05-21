@@ -34,7 +34,7 @@ class DisplayPhotographerMedia {
   }
 
   async getPhotographerMedias() {
-    this.photographerMedias = await this.photographerDataProvider.getMedia(this.id);
+    this.photographerMedias = await this.photographerDataProvider.media(this.id);
   }
 
   async DisplayPhotographerMedia() {
