@@ -1,5 +1,5 @@
 import { PhotographerObjectProvider } from "../../api/PhotographerObjectProvider.js";
-import { MediaApi } from "../../api/Api.js";
+/* import { MediaApi } from "../../api/Api.js"; */
 import { sectionMediaPhotographer } from "../../layout/SectionMediaPhotographer.js";
 import { getIdFromUrl } from "../GetIdFromUrl.js";
 import { PhotographerDataProvider } from "../../api/PhotographerDataProvider.js";
@@ -9,7 +9,7 @@ class DisplayPhotographerMedia {
   constructor() {
     this.$photographerMainWrapper = document.querySelector("main");
     this.objectProvider = new PhotographerObjectProvider();
-    this.mediaApi = new MediaApi("/Front-End-Fisheye/data/photographers.json");
+    /* this.mediaApi = new MediaApi("/Front-End-Fisheye/data/photographers.json"); */
     this.photographerDataProvider = new PhotographerDataProvider();
     this.tabIndex = 8;
     this.photographerData = null;
@@ -34,7 +34,7 @@ class DisplayPhotographerMedia {
   }
 
   async getPhotographerMedias() {
-    this.photographerMedias = await this.mediaApi.getMedia(this.id);
+    this.photographerMedias = await this.photographerDataProvider.getMedia(this.id);
   }
 
   async DisplayPhotographerMedia() {
