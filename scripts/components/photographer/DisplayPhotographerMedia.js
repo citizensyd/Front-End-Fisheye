@@ -9,7 +9,7 @@ class DisplayPhotographerMedia {
   constructor() {
     this.$photographerMainWrapper = document.querySelector("main");
     this.objectProvider = new PhotographerObjectProvider();
-    this.mediaApi = new MediaApi("/data/photographers.json");
+    this.mediaApi = new MediaApi("/Front-End-Fisheye/data/photographers.json");
     this.photographerDataProvider = new PhotographerDataProvider();
     this.tabIndex = 8;
     this.photographerData = null;
