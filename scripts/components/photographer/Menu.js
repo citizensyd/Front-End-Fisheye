@@ -1,5 +1,5 @@
 import { getIdFromUrl } from "../GetIdFromUrl.js";
-import { MediaApi } from "../../api/Api.js";
+import { PhotographerDataProvider } from "../../api/PhotographerDataProvider.js";
 import { DisplayPhotographerMedia } from "../photographer/DisplayPhotographerMedia.js";
 
 class Menu {
@@ -15,7 +15,7 @@ class Menu {
     this.trois.addEventListener("click", this.changeMenu.bind(this));
     this.isDown = false;
     this.id = getIdFromUrl();
-    this.mediaApi = new MediaApi("/data/photographers.json");
+    this.photographerDataProvider = new PhotographerDataProvider;
     this.mediaPhotographer = null;
     this.photographerMedia;
     this.eventTargetTextContent = null;
@@ -60,7 +60,7 @@ class Menu {
   }
 
   async getMediaPhotographer() {
-    this.mediaPhotographer = await this.mediaApi.getMedia(this.id);
+    this.mediaPhotographer = await this.photographerDataProvider.media(this.id);
     if (this.un.textContent == "Popularité") {
       this.sortByPopularity();
     }

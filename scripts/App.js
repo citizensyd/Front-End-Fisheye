@@ -7,6 +7,7 @@ class App {
   }
 
   async main() {
+    console.log(window.location.href);
     const photographersData = await this.PhotographerDataProvider.photographers();
     displayPhotographerIndex(photographersData);
   }

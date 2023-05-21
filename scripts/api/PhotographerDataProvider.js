@@ -5,10 +5,16 @@ import { UniqueMediaApi } from "./Api.js";
 
 class PhotographerDataProvider {
   constructor() {
-    this.photographersApi = new PhotographersApi("/Front-End-Fisheye/data/photographers.json");
-    this.photographerApi = new PhotographerApi("/Front-End-Fisheye/data/photographers.json");
-    this.mediaApi = new MediaApi("/Front-End-Fisheye/data/photographers.json");
-    this.UniqueMediaApi = new UniqueMediaApi("/Front-End-Fisheye/data/photographers.json");
+    this.photographersJson = null;
+    if (window.location.href.includes("citizensyd")) {
+      this.photographersJson = "/Front-End-Fisheye/data/photographers.json";
+    } else {
+      this.photographersJson = "/data/photographers.json";
+    } 
+    this.photographersApi = new PhotographersApi(this.photographersJson);
+    this.photographerApi = new PhotographerApi(this.photographersJson);
+    this.mediaApi = new MediaApi(this.photographersJson);
+    this.UniqueMediaApi = new UniqueMediaApi(this.photographersJson);
   }
 
   async photographers() {
