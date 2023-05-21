@@ -8,7 +8,7 @@ class PhotographerDataProvider {
     this.photographersApi = new PhotographersApi("/Front-End-Fisheye/data/photographers.json");
     this.photographerApi = new PhotographerApi("/Front-End-Fisheye/data/photographers.json");
     this.mediaApi = new MediaApi("/Front-End-Fisheye/data/photographers.json");
-    this.UniqueMediaApi = new UniqueMediaApi("/data/photographers.json");
+    this.UniqueMediaApi = new UniqueMediaApi("/Front-End-Fisheye/data/photographers.json");
   }
 
   async photographers() {
