@@ -5,9 +5,9 @@ import { UniqueMediaApi } from "./Api.js";
 
 class PhotographerDataProvider {
   constructor() {
-    this.photographersApi = new PhotographersApi("/data/photographers.json");
-    this.photographerApi = new PhotographerApi("/data/photographers.json");
-    this.mediaApi = new MediaApi("/data/photographers.json");
+    this.photographersApi = new PhotographersApi("/Front-End-Fisheye/data/photographers.json");
+    this.photographerApi = new PhotographerApi("/Front-End-Fisheye/data/photographers.json");
+    this.mediaApi = new MediaApi("/Front-End-Fisheye/data/photographers.json");
     this.UniqueMediaApi = new UniqueMediaApi("/data/photographers.json");
   }
 
