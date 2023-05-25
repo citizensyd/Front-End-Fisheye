@@ -1,41 +1,66 @@
+import { MenuKeyboard } from "../components/photographer/MenuKeyboard.js";
 class KeyboardNavigationPhotographer {
   constructor(previousCurrentElementIndex) {
+    this.drop = document.querySelector(".photographer-menu-option-drop");
+    this.spanLikeHeart = Array.from(document.querySelectorAll(".photographer-media-likes-heart"));
     this.elements = Array.from(document.querySelectorAll("[tabindex]"));
     this.currentIndex = 0;
     this.currentElementIndex = -1;
     this.returnPreviousCurrentElementIndex = previousCurrentElementIndex;
     this.element = null;
+    this.menuKeyboard = new MenuKeyboard();
+    this.handleKeyDownBind = this.handleKeyDown.bind(this);
+  }
+
+  updateElements() {
+    this.elements = Array.from(document.querySelectorAll("[tabindex]"));
   }
 
   setupEventListeners() {
     this.elements.forEach((item) => {
-        item.addEventListener("keydown", (event) => {
-          if (event.key === "ArrowUp") {
-            event.preventDefault();
-            this.navigateUp();
-            event.stopPropagation();
-          } else if (event.key === "ArrowDown") {
-            event.preventDefault();
-            this.navigateDown();
-            event.stopPropagation();
-          } else if (event.key === "ArrowLeft") {
-            event.preventDefault();
-            this.navigateLeftPhotographer();
-            event.stopPropagation();
-          } else if (event.key === "ArrowRight") {
-            event.preventDefault();
-            this.navigateRightPhotographer();
-            event.stopPropagation();
-          } else if (event.key === "Enter") {
-            event.preventDefault();
-            event.target.querySelector(".photographer-media-likes-heart")?.click();
-            event.target.querySelector("img")?.click();
-            event.stopPropagation();
-          }
-        });
-      });
+      item.addEventListener("keydown", this.handleKeyDownBind);
+    });
+  }  
+
+  removeEventListeners() {
+    this.elements.forEach((item) => {
+      item.removeEventListener("keydown", this.handleKeyDownBind);
+    });
   }
-  
+
+  handleKeyDown = (event) =>{
+    if (event.key === "ArrowUp") {
+      event.preventDefault();
+      this.navigateUp();
+      event.stopPropagation();
+    } else if (event.key === "ArrowDown") {
+      event.preventDefault();
+      this.navigateDown();
+      event.stopPropagation();
+    } else if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      this.navigateLeftPhotographer();
+      event.stopPropagation();
+    } else if (event.key === "ArrowRight") {
+      event.preventDefault();
+      this.navigateRightPhotographer();
+      event.stopPropagation();
+    } else if (event.key === "Enter") {
+      event.preventDefault();
+      console.log(event.target);
+      if (event.target === this.drop) {
+        event.target.click();
+        this.menuKeyboard.toggleMenuKeyboard();
+        event.stopPropagation();
+      } else if (this.spanLikeHeart.some(element => element === event.target)) {
+        event.target.click();
+        event.stopPropagation();
+      } else if (event.target.querySelector(".photographer-media-image")) {
+        event.target.querySelector("img, video")?.click();
+        event.stopPropagation();
+      }
+    }
+  }
 
   navigateDown() {
     if (this.returnPreviousCurrentElementIndex !== undefined && this.returnPreviousCurrentElementIndex !== null) {
@@ -87,12 +112,13 @@ class KeyboardNavigationPhotographer {
   focusElementPhotographer() {
     if (this.returnPreviousCurrentElementIndex !== undefined && this.returnPreviousCurrentElementIndex !== null) {
       this.element = this.elements[this.returnPreviousCurrentElementIndex - 1];
-      this.element.focus(this.element);
+      this.element.focus();
       this.currentElementIndex = this.returnPreviousCurrentElementIndex - 1;
       this.returnPreviousCurrentElementIndex = null;
     } else {
+      this.updateElements();
       this.element = this.elements[this.currentElementIndex];
-      this.element.focus(this.element);
+      this.element.focus();
     }
   }
 }

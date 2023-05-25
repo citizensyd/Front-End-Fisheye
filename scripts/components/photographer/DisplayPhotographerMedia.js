@@ -12,6 +12,8 @@ class DisplayPhotographerMedia {
     /* this.mediaApi = new MediaApi("/Front-End-Fisheye/data/photographers.json"); */
     this.photographerDataProvider = new PhotographerDataProvider();
     this.tabIndex = 8;
+    this.newTabIndex1 = 6;
+    this.newTabIndex2 = 7;
     this.photographerData = null;
     this.photographerMedias = null;
     this.id = getIdFromUrl();
@@ -19,10 +21,12 @@ class DisplayPhotographerMedia {
     this.$photographerMedia = null;
     this.oldArray = null;
     this.card = 1;
+    this.newCard = 1;
     this.photographerObject = null;
     this.getPhotographerMedias();
     this.getPhotographerData();
     this.getPhotographerObject();
+    this.keyboardNavigationPhotographer = null;
   }
 
   async getPhotographerData() {
@@ -106,39 +110,61 @@ class DisplayPhotographerMedia {
     photographerMediaWrapper.insertBefore(photographerPriceElement, photographerMediaWrapper.firstChild);
     this.counterLike.init();
   }
-
+  
   DisplayNewPhotographerMedia(newArray) {
+    this.tabIndex = 8;
     this.$photographerMedia = document.querySelector(".photographer-media");
     this.$photographerMedia.remove();
     this.photographerMedias = newArray;
     this.DisplayPhotographerMedia();
   }
+  
+  displayNewPhotographerMediaById(newArray) {
 
-  displayNewPhotographerMediaById(previousArray, newArray) {
-    console.log("displayNewPhotographerMediaById");
-    this.$photographerMedia = document.querySelector(".photographer-media");
-    console.log(newArray);
-    console.log(previousArray);
-    console.log(this.$photographerMedia);
+    this.$photographerMedia = document.querySelectorAll(".photographer-media-card");
+    const sectionMedia = document.querySelector(".photographer-media");
 
-    // Récupérer l'id de l'image et de la vidéo dans un tableau
-    const prevoiousMediaIdArray = Array.from(document.querySelectorAll(".photographer-media img[id], .photographer-media video[id]"), (element) => element.id);
-    console.log(prevoiousMediaIdArray);
+    const inPlaceMediaIdArray = Array.from(document.querySelectorAll(".photographer-media img[id], .photographer-media video[id]"), (element) => element.id);
+    const newMediaIdArray = [];
+    for (const item of newArray) {
+      newMediaIdArray.push(item.id);
+    }
+    const newMediaIdArrayString = newMediaIdArray.map((element) => element.toString());
 
-    // Récupérer l'id de la carte dans un tableau
-    const previousCardIdArray = Array.from(document.querySelectorAll(".photographer-media-card[id]"), (element) => element.id);
-    console.log(previousCardIdArray);
-    console.log(typeof previousCardIdArray);
+    const positionOfNewArray = newMediaIdArrayString.map((element) => inPlaceMediaIdArray.indexOf(element));
 
-    // Incorporer dans un tableau d'objets
-    const previousCardMediaIdArray = previousCardIdArray.map((cardId, index) => ({ cardId, mediaId: prevoiousMediaIdArray[index] }));
-    console.log(previousCardMediaIdArray);
+    const mediaCardArray = [...this.$photographerMedia];
 
-    /* créer:
- - le nombre de card = newArray.length
- - sélectionner toutes les cards
- - remplacer chaque card img id par celle correspondant sa position dans le tableau card[i]
-*/
+    const fragment = document.createDocumentFragment();
+
+    positionOfNewArray.forEach((newPosition, currentPosition) => {
+      console.log("positionOfNewArray");
+      if (newPosition >= 0 && newPosition < mediaCardArray.length) {
+        const card = mediaCardArray[newPosition];
+        console.log(card);
+        const cardId = card.id;
+        const newId = cardId.replace(/\d+/, `${positionOfNewArray.indexOf(positionOfNewArray[currentPosition]) + 1}`);
+        card.id = newId;
+
+        const tabIndex = card.getAttribute("tabindex");
+        const newTabIndexValue1 = `${(this.newTabIndex1 += 2)}`;
+        const newTabIndex1 = tabIndex.replace(/\d+/, newTabIndexValue1);
+        card.setAttribute("tabindex", newTabIndex1);
+
+        const oneLikesHeart = card.querySelector(".photographer-media-likes-heart")
+        const LikesHearTabIndex = oneLikesHeart.getAttribute("tabindex");
+        const newTabIndexValue2 = `${(this.newTabIndex2 += 2)}`;
+        const newTabIndex2 = LikesHearTabIndex.replace(/\d+/, newTabIndexValue2);
+        oneLikesHeart.setAttribute("tabindex", newTabIndex2);
+
+        fragment.appendChild(card);
+      }
+    });
+
+    sectionMedia.appendChild(fragment);
+
+
   }
 }
 export { DisplayPhotographerMedia };
+

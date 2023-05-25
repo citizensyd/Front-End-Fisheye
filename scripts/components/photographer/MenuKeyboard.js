@@ -8,36 +8,20 @@ class MenuKeyboard {
     this.isDown = false;
     this.initialIndexButton = 6;
     this.menuItems = document.querySelectorAll(".menu-item");
-    this.menuElementEventTarget = null;
     this.currentIndex = 0;
     this.currentIndexMenu = 0;
     this.isDownMenu = false;
-    this.setupListenerOpenMenu();
     this.handleMenuKeyDownBound = this.handleMenuKeyDown.bind(this);
   }
 
-  setupListenerOpenMenu() {
-    this.drop.addEventListener("keydown", (event) => {
-      this.menuElementEventTarget = event.target;
-      if (event.key === "Enter") {
-        event.target.click();
-        this.toggleMenuKeyboard();
-        event.stopPropagation();
-      }
-    });
-  }
-
   openMenuKeyboard() {
-    this.activateMenuItem();
     this.isDownMenu = true;
+    this.focusMenuItem();
   }
 
   closeMenuKeyboard() {
-    this.drop.setAttribute("tabindex", this.initialIndexButton);
-    this.un.removeAttribute("tabindex");
-    this.deux.removeAttribute("tabindex");
-    this.trois.removeAttribute("tabindex");
     this.isDownMenu = false;
+    this.drop.focus();
   }
 
   toggleMenuKeyboard() {
@@ -58,17 +42,14 @@ class MenuKeyboard {
   }
 
   removeEventListenersMenu() {
-    console.log("removeEventListenersMenu");
     const handleMenuKeyDownBound = this.handleMenuKeyDownBound;
     this.menuItems.forEach((item) => {
-      console.log(item);
-
       item.removeEventListener("keydown", handleMenuKeyDownBound);
+      item.removeAttribute("tabindex");
     });
   }
 
   handleMenuKeyDown(event) {
-    this.menuElementEventTarget = event.target;
     if (event.key === "ArrowDown") {
       event.preventDefault();
       this.navigateDownMenu();
@@ -82,24 +63,13 @@ class MenuKeyboard {
       event.stopPropagation();
     } else if (event.key === "ArrowRight") {
       event.preventDefault();
-      if (event.target.className === "photographer-menu-option-un menu-item focused") {
-        this.navigateRightMenu();
-      }
+      this.navigateRightMenu();
       event.stopPropagation();
     } else if (event.key === "Enter") {
       event.preventDefault();
       event.target.click();
-      event.stopPropagation();
-    }
-  }
-
-  activateMenuItem() {
-    //this.menuItem = this.menuItems[this.currentIndex];
-    console.log(this.menuElementEventTarget.tagName);
-    if (this.menuElementEventTarget.tagName === "IMG") {
-      //this.menuItem = this.menuItems[this.currentIndexMenu + 1];
-      this.focusMenuItem();
-    }
+      this.toggleMenuKeyboard();
+      }
   }
 
   navigateDownMenu() {
@@ -113,17 +83,14 @@ class MenuKeyboard {
   }
 
   navigateRightMenu() {
-    this.drop.focus();
+     this.drop.focus(); 
   }
 
   focusMenuItem() {
-    console.log(this.menuItems);
-    console.log(this.currentIndexMenu);
     this.menuItems.forEach((item, index) => {
       if (index === this.currentIndexMenu) {
         item.classList.add("focused");
         item.setAttribute("tabindex", "0");
-        console.log(item);
         item.focus();
       } else {
         item.classList.remove("focused");
@@ -134,17 +101,3 @@ class MenuKeyboard {
 }
 
 export { MenuKeyboard };
-
-/*   buttonManager() {
-    console.log(this.menu);
-    this.button = document.querySelector("#photographer-menu-button");
-    let initialIndexButton = this.button.tabindex;
-    console.log(initialIndexButton);
-    this.button.addEventListener("click", () => {
-      if (this.button.getAttribute("aria-expanded") === "true") {
-        this.closeMenu();
-      } else {
-        this.menu.openMenu();
-      }
-    });
-  } */

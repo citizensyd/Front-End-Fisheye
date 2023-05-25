@@ -1,6 +1,7 @@
 import { getIdFromUrl } from "../GetIdFromUrl.js";
 import { PhotographerDataProvider } from "../../api/PhotographerDataProvider.js";
-import { DisplayPhotographerMedia } from "../photographer/DisplayPhotographerMedia.js";
+import { DisplayPhotographerMedia } from "./DisplayPhotographerMedia.js";
+import { KeyboardNavigationPhotographer } from "../../utils/KeyboardNavigationPhotographer.js";
 
 class Menu {
   constructor() {
@@ -21,6 +22,7 @@ class Menu {
     this.eventTargetTextContent = null;
     this.DisplayPhotographerMedia = new DisplayPhotographerMedia();
     this.initialIndexButton = 6;
+    this.keyboardNavigationPhotographer = new KeyboardNavigationPhotographer;
   }
 
   openMenu() {
@@ -32,7 +34,6 @@ class Menu {
   }
 
   closeMenu() {
-    console.log("closemenuindex");
     this.drop.setAttribute("aria-expanded", "false");
     this.drop.classList.remove("rotate");
     this.hidden.classList.remove("down");
@@ -54,12 +55,13 @@ class Menu {
       const textUn = this.un.textContent;
       this.un.textContent = this.eventTargetTextContent;
       event.target.textContent = textUn;
-      this.closeMenu();
+      this.toggleMenu();
     }
     this.getMediaPhotographer();
   }
 
   async getMediaPhotographer() {
+    this.keyboardNavigationPhotographer.updateElements();
     this.mediaPhotographer = await this.photographerDataProvider.media(this.id);
     if (this.un.textContent == "Popularité") {
       this.sortByPopularity();
@@ -84,21 +86,21 @@ class Menu {
       }
       return 0;
     });
-    this.DisplayPhotographerMedia.DisplayNewPhotographerMedia(this.mediaPhotographer);
+    this.DisplayPhotographerMedia.displayNewPhotographerMediaById(this.mediaPhotographer);
   }
 
   sortByPopularity() {
     this.mediaPhotographer.sort((a, b) => {
       return b.likes - a.likes;
     });
-    this.DisplayPhotographerMedia.DisplayNewPhotographerMedia(this.mediaPhotographer);
+    this.DisplayPhotographerMedia.displayNewPhotographerMediaById(this.mediaPhotographer);
   }
 
   sortByDate() {
     this.mediaPhotographer.sort((a, b) => {
       return Date.parse(b.date) - Date.parse(a.date);
     });
-    this.DisplayPhotographerMedia.DisplayNewPhotographerMedia(this.mediaPhotographer);
+    this.DisplayPhotographerMedia.displayNewPhotographerMediaById(this.mediaPhotographer);
   }
 }
 
