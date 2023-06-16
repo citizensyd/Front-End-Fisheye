@@ -88,7 +88,6 @@ class Menu {
       }
       return 0;
     });
-    console.log(this.mediaPhotographer);
     this.lightbox.setMediaFilter(this.mediaPhotographer);
     this.DisplayPhotographerMedia.displayNewPhotographerMediaById(this.mediaPhotographer);
   }

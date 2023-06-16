@@ -44,15 +44,12 @@ class Modal {
 
   onKeyTab(event) {
     if (event.key === "Tab") {
-      console.log(event);
       event.preventDefault();
       this.navigateTab();
     }
   }
 
   navigateTab() {
-    console.log(this.modalTabIndex.length);
-    console.log(this.currentIndexModal);
     this.currentIndexModal = (this.currentIndexModal + 1) % this.modalTabIndex.length;
     if (this.currentIndexModal === this.modalTabIndex.length) {
       this.currentIndexModal = 0;
@@ -130,23 +127,7 @@ class Modal {
     this.buttonDisplayModal();
 
     document.body.appendChild(modalElement.firstChild);
-    /*  this.placeHolderRemoveFocus(); */
   }
-
-  /*   placeHolderRemoveFocus() {
-    const inputElement = document.querySelectorAll("form input");
-    inputElement.forEach((input) => {
-      input.addEventListener("focus", (event) => {
-        this.oldPlaceHolder = event.target.closest("div").querySelector("label").textContent;
-        input.removeAttribute("placeholder");
-      });
-    });
-    inputElement.forEach((input) => {
-      input.addEventListener("blur", () => {
-        input.setAttribute("placeholder", this.oldPlaceHolder);
-      });
-    });
-  } */
 
   onSubmit(e) {
     e.preventDefault();

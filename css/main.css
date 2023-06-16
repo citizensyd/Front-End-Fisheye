@@ -370,7 +370,7 @@ header {
   font-weight: bold;
   font-size: 18px;
 }
-.photographer-menu label {
+.photographer-menu span {
   margin-right: 10px;
   padding-top: 10px;
 }

@@ -2,9 +2,10 @@ import { PhotographerDataProvider } from "../../api/PhotographerDataProvider.js"
 import { getIdFromUrl } from "../../utils/GetIdFromUrl.js";
 import { KeyboardNavigationPhotographer } from "../keyboard/KeyboardNavigationPhotographer.js";
 
-let previousMediaFilter = null;
+/* let previousMediaFilter = null; */
 
 class Lightbox {
+  static previousMediaFilter = null;
   constructor(previousCurrentElementIndex) {
     // Initialize class properties
     this.previousCurrentElementIndex = previousCurrentElementIndex;
@@ -24,12 +25,11 @@ class Lightbox {
     this.arrowRight = null;
     this.mediaIncorporate = null;
     this.previousIndex = null;
-    this.mediaFilter = previousMediaFilter;
+    this.mediaFilter = Lightbox.previousMediaFilter;
   }
 
   setMediaFilter(mediaFilter) {
-    previousMediaFilter = mediaFilter;
-    console.log(previousMediaFilter);
+    Lightbox.previousMediaFilter = mediaFilter;
   }
 
   // Displays the lightbox modal
@@ -175,7 +175,6 @@ class Lightbox {
       this.previousIndex = ids.length - 1;
     }
     let newElement = ids[this.index];
-console.log(this.previousIndex);
     let previousElement = ids[this.previousIndex];
     let element = document.querySelector(`#${previousElement}`);
     element.style.display = window.getComputedStyle(element).display === "block" ? "none" : "none";
