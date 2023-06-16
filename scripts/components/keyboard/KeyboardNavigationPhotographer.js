@@ -45,10 +45,7 @@ class KeyboardNavigationPhotographer {
       event.preventDefault();
       this.navigateRightPhotographer();
       event.stopPropagation();
-    } else if (event.key === "Enter") {
-      event.preventDefault();
-      event.target.tagName === "BUTTON" ? event.target.click() : null;
-      event.target.tagName === "A" ? event.target.click() : null;      
+    } else if (event.key === "Enter") {  
       if (event.target === this.drop) {
         event.target.click();
         this.menuKeyboard.toggleMenuKeyboard();
