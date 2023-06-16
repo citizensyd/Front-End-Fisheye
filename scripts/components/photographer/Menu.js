@@ -1,7 +1,8 @@
-import { getIdFromUrl } from "../GetIdFromUrl.js";
+import { getIdFromUrl } from "../../utils/GetIdFromUrl.js";
 import { PhotographerDataProvider } from "../../api/PhotographerDataProvider.js";
 import { DisplayPhotographerMedia } from "./DisplayPhotographerMedia.js";
-import { KeyboardNavigationPhotographer } from "../../utils/KeyboardNavigationPhotographer.js";
+import { KeyboardNavigationPhotographer } from "../keyboard/KeyboardNavigationPhotographer.js";
+import { Lightbox } from "./DisplayLightbox.js";
 
 class Menu {
   constructor() {
@@ -23,6 +24,7 @@ class Menu {
     this.DisplayPhotographerMedia = new DisplayPhotographerMedia();
     this.initialIndexButton = 6;
     this.keyboardNavigationPhotographer = new KeyboardNavigationPhotographer;
+    this.lightbox = new Lightbox();
   }
 
   openMenu() {
@@ -86,6 +88,8 @@ class Menu {
       }
       return 0;
     });
+    console.log(this.mediaPhotographer);
+    this.lightbox.setMediaFilter(this.mediaPhotographer);
     this.DisplayPhotographerMedia.displayNewPhotographerMediaById(this.mediaPhotographer);
   }
 
@@ -93,6 +97,7 @@ class Menu {
     this.mediaPhotographer.sort((a, b) => {
       return b.likes - a.likes;
     });
+    this.lightbox.setMediaFilter(this.mediaPhotographer);
     this.DisplayPhotographerMedia.displayNewPhotographerMediaById(this.mediaPhotographer);
   }
 
@@ -100,6 +105,8 @@ class Menu {
     this.mediaPhotographer.sort((a, b) => {
       return Date.parse(b.date) - Date.parse(a.date);
     });
+    this.lightbox.setMediaFilter(this.mediaPhotographer);
+    this.lightbox.mediaFilter = this.mediaPhotographer;
     this.DisplayPhotographerMedia.displayNewPhotographerMediaById(this.mediaPhotographer);
   }
 }

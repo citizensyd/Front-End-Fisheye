@@ -309,11 +309,15 @@ header {
   height: 800px;
   width: 1050px;
 }
+.lightbox-media-picture div {
+  width: 100%;
+  height: 100%;
+}
 .lightbox-media-picture p {
   position: absolute;
   bottom: -50px;
   font-size: 24px;
-  color: #901C1C;
+  color: #901c1c;
 }
 .lightbox-media-picture img {
   width: 100%;
@@ -494,13 +498,13 @@ header {
 }
 
 .photographer-like-price {
-  position: absolute;
+  position: fixed;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  right: -75px;
+  bottom: 0px;
+  right: 100px;
   padding: 0 50px 10px 50px;
-  top: 400px;
   width: 376px;
   height: 89px;
   background-color: #db8876;
@@ -613,12 +617,14 @@ header {
   align-items: center;
   justify-content: space-between;
   max-width: 100%;
+  width: 125px;
   white-space: nowrap;
 }
 
 .photographer-media-likes-heart {
   display: flex;
   align-items: center;
+  color: #D3573C;
   cursor: pointer;
 }
 

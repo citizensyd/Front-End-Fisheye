@@ -3,7 +3,7 @@ import { Lightbox } from "../photographer/DisplayLightbox.js";
 export const mediaLink = (event) => {
   const previousCurrentTabIndex = parseInt(getTabindexFromSecondParentDiv(event.target));
   const target = event.target;
-  const lightbox = new Lightbox(previousCurrentTabIndex );
+  const lightbox = new Lightbox(previousCurrentTabIndex);
   const mediaId = parseInt(target.id);
   lightbox.create(mediaId);
 };

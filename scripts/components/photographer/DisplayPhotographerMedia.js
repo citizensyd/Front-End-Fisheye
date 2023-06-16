@@ -1,7 +1,6 @@
 import { PhotographerObjectProvider } from "../../api/PhotographerObjectProvider.js";
-/* import { MediaApi } from "../../api/Api.js"; */
 import { sectionMediaPhotographer } from "../../layout/SectionMediaPhotographer.js";
-import { getIdFromUrl } from "../GetIdFromUrl.js";
+import { getIdFromUrl } from "../../utils/GetIdFromUrl.js";
 import { PhotographerDataProvider } from "../../api/PhotographerDataProvider.js";
 import { CounterLike } from "../photographer/CounterLike.js";
 
@@ -9,7 +8,6 @@ class DisplayPhotographerMedia {
   constructor() {
     this.$photographerMainWrapper = document.querySelector("main");
     this.objectProvider = new PhotographerObjectProvider();
-    /* this.mediaApi = new MediaApi("/Front-End-Fisheye/data/photographers.json"); */
     this.photographerDataProvider = new PhotographerDataProvider();
     this.tabIndex = 8;
     this.newTabIndex1 = 6;
@@ -65,7 +63,7 @@ class DisplayPhotographerMedia {
 
       const mediaHeart = () => {
         const Heart = document.createElement("img");
-        Heart.src = "assets/images/heart.png";
+        Heart.src = "assets/images/heart_red_light.png";
         Heart.alt = "Un coeur rouge";
         return Heart;
       };
@@ -111,13 +109,13 @@ class DisplayPhotographerMedia {
     this.counterLike.init();
   }
   
-  DisplayNewPhotographerMedia(newArray) {
+/*   DisplayNewPhotographerMedia(newArray) {
     this.tabIndex = 8;
     this.$photographerMedia = document.querySelector(".photographer-media");
     this.$photographerMedia.remove();
     this.photographerMedias = newArray;
     this.DisplayPhotographerMedia();
-  }
+  } */
   
   displayNewPhotographerMediaById(newArray) {
 
@@ -138,10 +136,8 @@ class DisplayPhotographerMedia {
     const fragment = document.createDocumentFragment();
 
     positionOfNewArray.forEach((newPosition, currentPosition) => {
-      console.log("positionOfNewArray");
       if (newPosition >= 0 && newPosition < mediaCardArray.length) {
         const card = mediaCardArray[newPosition];
-        console.log(card);
         const cardId = card.id;
         const newId = cardId.replace(/\d+/, `${positionOfNewArray.indexOf(positionOfNewArray[currentPosition]) + 1}`);
         card.id = newId;

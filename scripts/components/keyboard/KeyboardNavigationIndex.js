@@ -5,7 +5,6 @@ class KeyboardNavigationIndex {
   }
 
   setupEventListeners() {
-    console.log("setupEventListenersIndexPage");
     this.elements.forEach((item) => {
       item.addEventListener("keydown", (event) => {
         if (event.key === "ArrowUp") {
@@ -56,7 +55,6 @@ class KeyboardNavigationIndex {
   }
 
   focusElement() {
-    console.log("focusElementindex");
     const element = this.elements[this.currentElementIndex];
     element.focus(element);
   }

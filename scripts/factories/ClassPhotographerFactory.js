@@ -48,7 +48,7 @@ class indexPhotographer {
     const photographerPicture = document.createElement("img");
     photographerPicture.classList.add(`photographer-img-${this._id}`);
     photographerPicture.setAttribute("src", picture);
-    photographerPicture.setAttribute("alt", `Portrait du photographe ${this._name}`);
+    photographerPicture.setAttribute("alt", `Portrait du photographe`);
     photographerPicture.addEventListener("click", photographerLink);
     containerPicture.appendChild(photographerPicture);
     return containerPicture;

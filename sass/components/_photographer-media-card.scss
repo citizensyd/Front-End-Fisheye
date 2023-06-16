@@ -43,12 +43,14 @@
   align-items: center;
   justify-content: space-between;
   max-width: 100%;
+  width: 125px;
   white-space: nowrap;
 }
 
 .photographer-media-likes-heart {
   display: flex;
   align-items: center;
+  color: #D3573C;
   cursor: pointer;
 }
 

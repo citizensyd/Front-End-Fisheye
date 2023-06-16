@@ -89,11 +89,11 @@ class MenuKeyboard {
   focusMenuItem() {
     this.menuItems.forEach((item, index) => {
       if (index === this.currentIndexMenu) {
-        item.classList.add("focused");
+        /* item.classList.add("focused"); */
         item.setAttribute("tabindex", "0");
         item.focus();
       } else {
-        item.classList.remove("focused");
+        /* item.classList.remove("focused"); */
         item.setAttribute("tabindex", "-1");
       }
     });

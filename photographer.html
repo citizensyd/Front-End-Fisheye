@@ -10,17 +10,17 @@
   </head>
   <body>
     <header>
-      <a href="index.html" tabindex="1" aria-label="Accueil">
-        <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" />
+      <a href="index.html" tabindex="1" aria-label="Logo du site Fisheye avec retour à l'accueil">
+        <img src="assets/images/logo.png" class="logo" alt="Logo Fisheye" />
       </a>
     </header>
     <main id="main">
       <section class="photograph-header"></section>
-      <nav class="photographer-menu" tabindex="5">
+      <nav class="photographer-menu" tabindex="5" aria-label="menu de trie par popularité date ou titre">
         <label id="sort-label">Trier par</label>
         <div class="photographer-menu-options" role="listbox" aria-labelledby="sort-label" aria-activedescendant="option-popularite">
           <div class="photographer-menu-option-background"></div>
-          <img class="photographer-menu-option-drop" tabindex="6" id="photographer-menu-button" src="assets/images/drop.png" />
+          <img class="photographer-menu-option-drop" tabindex="6" id="photographer-menu-button" src="assets/images/drop.png" alt="bouton du menu"/>
           <div class="photographer-menu-option-un menu-item" role="option" aria-selected="true">Popularité</div>
           <div class="photographer-menu-options-hidden">
             <div class="photographer-menu-option-deux menu-item" role="option">Date</div>
@@ -32,21 +32,19 @@
     <script type="module" src="scripts/api/Api.js"></script>
     <script type="module" src="scripts/api/PhotographerDataProvider.js"></script>
     <script type="module" src="scripts/api/PhotographerObjectProvider.js"></script>
-    <script type="module" src="scripts/utils/contactForm.js"></script>
+    <script type="module" src="scripts/layout/contactForm.js"></script>
     <script type="module" src="scripts/pages/PagePhotographer.js"></script>
     <script type="module" src="scripts/layout/SectionMediaPhotographer.js"></script>
-    <script type="module" src="scripts/components/photographer/HeaderPhotographer.js"></script>
     <script type="module" src="scripts/components/photographer/DisplayPhotographerMedia.js"></script>
     <script type="module" src="scripts/components/photographer/DisplayPhotographerHeader.js"></script>
-    <script type="module" src="scripts/components/photographer/DisplayPhotographerPriceElement.js"></script>
     <script type="module" src="scripts/components/photographer/CounterLike.js"></script>
     <script type="module" src="scripts/components/photographer/DisplayLightbox.js"></script>
-    <script type="module" src="scripts/components/photographer/MenuKeyboard.js"></script>
+    <script type="module" src="scripts/components/keyboard/MenuKeyboard.js"></script>
     <script type="module" src="scripts/components/photographer/Menu.js"></script>
-    <script type="module" src="scripts/components/GetIdFromUrl.js"></script>
+    <script type="module" src="scripts/utils/GetIdFromUrl.js"></script>
     <script type="module" src="scripts/components/links/MediaLink.js"></script>
     <script type="module" src="scripts/factories/ClassPhotographerFactory.js"></script>
     <script type="module" src="scripts/factories/DispatchPhotographerFactory.js"></script>
-    <script type="module" src="scripts/utils/KeyboardNavigationPhotographer.js"></script>
+    <script type="module" src="scripts/components/keyboard/KeyboardNavigationPhotographer.js"></script>
   </body>
 </html>

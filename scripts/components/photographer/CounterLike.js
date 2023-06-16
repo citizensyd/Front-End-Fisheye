@@ -35,22 +35,24 @@ class CounterLike {
 
   // Function to increment and decrement like count
   incrementLike(event) {
-    const idMedia = event.target
-      .closest(".photographer-media-card")
-      .querySelector("img, video")
-      .getAttribute("id");
-    const replaceLike = event.target
-      .closest(".photographer-media-likes-heart")
-      .querySelector(".photographer-media-likes");
+    const idMedia = event.target.closest(".photographer-media-card").querySelector("img, video").getAttribute("id");
+    const replaceLike = event.target.closest(".photographer-media-likes-heart").querySelector(".photographer-media-likes");
+
+    const replaceImageHeart = event.target.closest(".photographer-media-likes-heart").querySelector("img");
 
     const media = this.newLikesArray.find((m) => m.id === parseInt(idMedia));
     const oldMediaLike = this.oldMediaLike.find((m) => m.id === parseInt(idMedia));
     if (oldMediaLike.likes == media.newLike) {
       media.newLike += 1;
       replaceLike.textContent = media.newLike;
+      replaceLike.style.color = "#901c1c";
+      replaceImageHeart.src = "assets/images/heart_red_dark.png";
     } else {
       media.newLike -= 1;
       replaceLike.textContent = media.newLike;
+      replaceLike.style.color = "#D3573C";
+      replaceImageHeart.src = "assets/images/heart_red_light.png";
+
     }
     // Display the total counter
     this.displayTotalCounter();

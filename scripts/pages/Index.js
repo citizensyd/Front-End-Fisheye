@@ -1,12 +1,12 @@
 import { newPhotographerFactory } from "../factories/DispatchPhotographerFactory.js";
 import { createArticlePhotographer } from "../components/index/ArticlePhotographer.js";
-import { KeyboardNavigationIndex } from "../utils/KeyboardNavigationIndex.js";
+import { KeyboardNavigationIndex } from "../components/keyboard/KeyboardNavigationIndex.js";
 
 /**
  * Affichage de chaque photographe sous forme d'article.
  * @param {Array} photographers - Liste des photographes à afficher.
  */
-async function displayPhotographerIndex(photographers) {
+const displayPhotographerIndex = async (photographers) =>{
   const photographersSection = document.querySelector(".photographer_section");
 
   photographers.forEach((photographer) => {

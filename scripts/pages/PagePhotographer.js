@@ -1,13 +1,12 @@
-import { getIdFromUrl } from "../components/GetIdFromUrl.js";
+import { getIdFromUrl } from "../utils/GetIdFromUrl.js";
 import { displayPhotographerHeader } from "../components/photographer/DisplayPhotographerHeader.js";
-import { DisplayPhotographerPriceElement } from "../components/photographer/DisplayPhotographerPriceElement.js";
 import { DisplayPhotographerMedia } from "../components/photographer/DisplayPhotographerMedia.js";
 import { PhotographerDataProvider } from "../api/PhotographerDataProvider.js";
-import { Modal } from "../utils/contactForm.js";
+import { Modal } from "../layout/contactForm.js";
 import { Lightbox } from "../components/photographer/DisplayLightbox.js";
 import { Menu } from "../components/photographer/Menu.js";
-import { KeyboardNavigationPhotographer } from "../utils/KeyboardNavigationPhotographer.js";
-import { MenuKeyboard } from "../components/photographer/MenuKeyboard.js";
+import { KeyboardNavigationPhotographer } from "../components/keyboard/KeyboardNavigationPhotographer.js";
+import { MenuKeyboard } from "../components/keyboard/MenuKeyboard.js";
 
 //
 class photographerPage {
@@ -15,7 +14,6 @@ class photographerPage {
     this.$photographersHeaderWrapper = document.querySelector(".photograph-header");
     this.id = getIdFromUrl();
     this.media = new DisplayPhotographerMedia();
-    this.PriceElement = new DisplayPhotographerPriceElement();
     this.photographerDataProvider = new PhotographerDataProvider();
     this.photographerData = null;
     this.modal = new Modal();
@@ -30,11 +28,8 @@ class photographerPage {
     await this.Header.displayPhotographerHeader(this.id, this.$photographersHeaderWrapper);
     
     // Initialisation of menu
-    await this.media.DisplayPhotographerMedia(this.id);
-    
-    // Creation of Price Element
-    /*     await this.PriceElement.DisplayPhotographerPriceElement(this.id); */
-    
+    await this.media.DisplayPhotographerMedia(this.id);    
+        
     // Creation of Modal
     this.modal.buttonDisplayModal(this.photographerData);
     
@@ -42,7 +37,6 @@ class photographerPage {
     
     this.KeyboardNavigationPhotographer = new KeyboardNavigationPhotographer();
     this.KeyboardNavigationPhotographer.setupEventListeners();
-    /* this.MenuKeyboardNavigation.setupEventListenersMenu(); */
     
     new MenuKeyboard();    
   }

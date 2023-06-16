@@ -1,11 +1,12 @@
 .photographer-like-price {
-  position: absolute;
+  position: fixed;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  right: -75px;
+  bottom: 0px;
+  right: 100px;
   padding: 0 50px 10px 50px;
-  top: 400px;
+
   width: 376px;
   height: 89px;
   background-color: #db8876;

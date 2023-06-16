@@ -1,4 +1,4 @@
-import { MenuKeyboard } from "../components/photographer/MenuKeyboard.js";
+import { MenuKeyboard } from "./MenuKeyboard.js";
 class KeyboardNavigationPhotographer {
   constructor(previousCurrentElementIndex) {
     this.drop = document.querySelector(".photographer-menu-option-drop");
@@ -47,7 +47,8 @@ class KeyboardNavigationPhotographer {
       event.stopPropagation();
     } else if (event.key === "Enter") {
       event.preventDefault();
-      console.log(event.target);
+      event.target.tagName === "BUTTON" ? event.target.click() : null;
+      event.target.tagName === "A" ? event.target.click() : null;      
       if (event.target === this.drop) {
         event.target.click();
         this.menuKeyboard.toggleMenuKeyboard();
